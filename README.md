@@ -38,7 +38,7 @@ See [BRAINSTORM.md](BRAINSTORM.md) for the full idea list and rationale.
 | [sulu-form](skills/sulu-form/) | 📝 planned | SuluFormBundle dynamic forms |
 | [sulu-testing](skills/sulu-testing/) | 📝 planned | Functional, Pest, E2E and API tests |
 | [sulu-devops](skills/sulu-devops/) | 📝 planned | Setup, Docker/FrankenPHP, deployment |
-| [sulu-upgrade](skills/sulu-upgrade/) | 📝 planned | 2.x → 3.0 and 3.x upgrades |
+| [sulu-upgrade](skills/sulu-upgrade/) | ✅ draft | 2.6 → 3.0 migration and 3.x updates |
 | [sulu-content-migration](skills/sulu-content-migration/) | 📝 planned | Content migrations for structural changes |
 | [sulu-doctor](skills/sulu-doctor/) | 📝 planned | Diagnose common misconfigurations |
 
