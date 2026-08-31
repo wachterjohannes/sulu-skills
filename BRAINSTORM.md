@@ -37,6 +37,13 @@ content-aware via SuluContentBundle where versioned/localized content is needed
 [#106 webspace-specific settings](https://github.com/sulu/sulu-demo/pull/106)).
 Probably the single most valuable skill: many steps, all conventional, easy to get wrong.
 
+### sulu-content-entity
+Equip a custom entity with the 3.0 content system (SuluContentBundle): main entity +
+dimension content entity, own template type, content/SEO/excerpt tabs via
+`ContentViewBuilderFactory`, draft/publish workflow, preview, website routing, and
+the optional teaser/link/smart-content integrations. Reference implementations:
+the article package and the `ExampleTestBundle` in sulu/sulu `packages/content/tests`.
+
 ### sulu-extend-entity
 Extend built-in entities: extra tab on contacts
 ([#89](https://github.com/sulu/sulu-demo/pull/89)), modify category list/form

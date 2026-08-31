@@ -19,7 +19,8 @@ See [BRAINSTORM.md](BRAINSTORM.md) for the full idea list and rationale.
 | --- | --- | --- |
 | [sulu-template](sulu-template/) | ✅ draft | Page/snippet/article templates: XML + Twig + registration |
 | [sulu-block](sulu-block/) | 📝 planned | Block types incl. block settings |
-| [sulu-custom-entity](sulu-custom-entity/) | 📝 planned | Custom Doctrine entity in the admin (list, form, API, permissions) |
+| [sulu-custom-entity](sulu-custom-entity/) | ✅ draft | Custom Doctrine entity in the admin (list, form, API, permissions) |
+| [sulu-content-entity](sulu-content-entity/) | ✅ draft | Equip a custom entity with the content system (templates, workflow, preview, website) |
 | [sulu-extend-entity](sulu-extend-entity/) | 📝 planned | Extend built-in entities (contact, category, user, excerpt) |
 | [sulu-content-type](sulu-content-type/) | 📝 planned | Custom content types and admin field types |
 | [sulu-list](sulu-list/) | 📝 planned | List transformers, toolbar/item actions, overlay adapters |
