@@ -137,16 +137,11 @@ for now; distribution later possibly as a Symfony AI Mate extension (like
 sulu-mate-extension), so a Sulu project pulls the skills in via Composer and
 `mate discover`. Keeping the skills raw and tool-agnostic keeps that path open.
 
-Further ideas worth stealing from symfony-skills:
-
-- **sulu-discover** — a background skill in the spirit of symfony-skills' `discover`:
-  before relying on memory, interrogate the project (`bin/adminconsole debug:router`,
-  `debug:container`, existing templates/webspaces, `composer.json` for the Sulu version).
-  Cheap to write, prevents the whole class of 2.x-from-memory mistakes; would absorb
-  part of what sulu-doctor was meant to do.
-- **benchmark/** — task + checklist pairs (e.g. "add an event entity with admin UI")
-  scored with and without skills, as symfony-skills does with its judge scripts. That
-  is the success criterion that turns the repo from opinion into evidence.
+From symfony-skills we also adopted **sulu-discover**, a background skill in the spirit
+of its `discover`: before relying on memory, interrogate the project (config files,
+`sulu:admin:debug-view`, `debug:container --tag=…`, the two console contexts). It absorbs
+part of what sulu-doctor was meant to do. symfony-skills' benchmark setup is deliberately
+NOT part of this repo.
 
 Suggested order by value ÷ effort:
 

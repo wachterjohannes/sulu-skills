@@ -23,6 +23,7 @@ See [BRAINSTORM.md](BRAINSTORM.md) for the full idea list and rationale.
 
 | Skill | Status | Scope |
 | --- | --- | --- |
+| [sulu-discover](skills/sulu-discover/) | ✅ draft | Look it up in the project instead of recalling it — files, debug commands, tags |
 | [sulu-template](skills/sulu-template/) | ✅ draft | Page/snippet/article templates: XML + Twig + registration |
 | [sulu-custom-entity](skills/sulu-custom-entity/) | ✅ draft | Custom Doctrine entity in the admin (list, form, API, permissions) |
 | [sulu-content-entity](skills/sulu-content-entity/) | ✅ draft | Equip a custom entity with the content system (templates, workflow, preview, website) |
