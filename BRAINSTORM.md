@@ -125,12 +125,28 @@ webspace keys, template not registered, permission issues), read logs, propose f
 
 ## Structure & prioritization
 
-Repo layout: raw skills — one directory per skill with `SKILL.md` plus `references/`
-(distilled, 3.0-verified guidance; the demo PRs serve as the task catalog, not as copy
-sources) and `templates/` (file skeletons). No Claude Code plugin packaging for now;
-distribution later possibly as a Symfony AI Mate extension (like sulu-mate-extension),
-so a Sulu project pulls the skills in via Composer and `mate discover`. Keeping the
-skills raw and tool-agnostic keeps that path open.
+Repo layout follows
+[wachterjohannes/symfony-skills](https://github.com/wachterjohannes/symfony-skills):
+`skills/<name>/SKILL.md` with frontmatter (`version`, `updated`, `sulu-versions`), an
+`AGENTS.md` trigger index for agents without a native skill system, per-agent install
+docs as plain "copy the folders". Each skill keeps `references/` (distilled, 3.0-verified
+guidance; the demo PRs serve as the task catalog, not as copy sources) and `templates/`
+(file skeletons) — a deliberate divergence from symfony-skills' 40-line-single-file
+style, justified by Sulu's irreducible XML/PHP structure. No Claude Code plugin packaging
+for now; distribution later possibly as a Symfony AI Mate extension (like
+sulu-mate-extension), so a Sulu project pulls the skills in via Composer and
+`mate discover`. Keeping the skills raw and tool-agnostic keeps that path open.
+
+Further ideas worth stealing from symfony-skills:
+
+- **sulu-discover** — a background skill in the spirit of symfony-skills' `discover`:
+  before relying on memory, interrogate the project (`bin/adminconsole debug:router`,
+  `debug:container`, existing templates/webspaces, `composer.json` for the Sulu version).
+  Cheap to write, prevents the whole class of 2.x-from-memory mistakes; would absorb
+  part of what sulu-doctor was meant to do.
+- **benchmark/** — task + checklist pairs (e.g. "add an event entity with admin UI")
+  scored with and without skills, as symfony-skills does with its judge scripts. That
+  is the success criterion that turns the repo from opinion into evidence.
 
 Suggested order by value ÷ effort:
 
