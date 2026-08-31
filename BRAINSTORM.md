@@ -118,10 +118,12 @@ webspace keys, template not registered, permission issues), read logs, propose f
 
 ## Structure & prioritization
 
-Repo layout: one directory per skill with `SKILL.md` plus `references/` (distilled,
-3.0-verified guidance; the demo PRs serve as the task catalog, not as copy sources)
-and `templates/` (file skeletons). Packaged as a Claude Code plugin so a project can
-install all Sulu skills at once.
+Repo layout: raw skills — one directory per skill with `SKILL.md` plus `references/`
+(distilled, 3.0-verified guidance; the demo PRs serve as the task catalog, not as copy
+sources) and `templates/` (file skeletons). No Claude Code plugin packaging for now;
+distribution later possibly as a Symfony AI Mate extension (like sulu-mate-extension),
+so a Sulu project pulls the skills in via Composer and `mate discover`. Keeping the
+skills raw and tool-agnostic keeps that path open.
 
 Suggested order by value ÷ effort:
 
