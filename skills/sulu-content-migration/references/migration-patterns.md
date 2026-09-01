@@ -1,9 +1,6 @@
 # Content migration patterns (Sulu 3.0)
 
-Verified against sulu/sulu 3.0: the content package's `MetadataLoader` maps
-`templateKey` (string, indexed) and the JSON columns `templateData`, `seoData`,
-`excerptData` onto every dimension content entity; the core packages name their tables
-as below.
+Verified against sulu/sulu 3.0: the content package's `MetadataLoader` maps `templateKey` (string, indexed) and the JSON columns `templateData`, `seoData`, `excerptData` onto every dimension content entity; the core packages name their tables as below.
 
 ## Tables and dimension columns
 
@@ -14,9 +11,7 @@ as below.
 | snippets | `sn_snippet_dimension_contents` |
 | custom entities | own table, e.g. `event_dimension_contents` |
 
-Each row is one dimension: `locale`, `stage` (`draft` or `live`), `version` (`0` =
-current, snapshots count up), `templateKey`. A migration that should affect "the
-content" must therefore update all rows of an entity, not one.
+Each row is one dimension: `locale`, `stage` (`draft` or `live`), `version` (`0` = current, snapshots count up), `templateKey`. A migration that should affect "the content" must therefore update all rows of an entity, not one.
 
 ## Property rename
 
@@ -75,15 +70,11 @@ final class Version20260901093000 extends AbstractMigration
 ```
 
 Direct `$this->connection` calls execute immediately (unlike `addSql`, which is queued)
-- that is fine for data migrations and the only way to transform in PHP. For large
-tables replace the single `fetchAllAssociative` with an id-based batch loop
-(`WHERE templateKey = ? AND id > ? ORDER BY id LIMIT 500`).
+- that is fine for data migrations and the only way to transform in PHP. For large tables replace the single `fetchAllAssociative` with an id-based batch loop (`WHERE templateKey = ? AND id > ? ORDER BY id LIMIT 500`).
 
 ## Block restructuring
 
-Blocks are stored under their property name as an array of objects; each entry carries
-its `type` plus that type's properties (for nested blocks see the next section).
-Renaming a block type and moving a field:
+Blocks are stored under their property name as an array of objects; each entry carries its `type` plus that type's properties (for nested blocks see the next section). Renaming a block type and moving a field:
 
 ```php
 $data = \json_decode($row['templateData'], true, 512, \JSON_THROW_ON_ERROR);
@@ -107,13 +98,11 @@ if ($changed) {
 }
 ```
 
-The same loop deletes obsolete block types (collect indexes, remove, reindex the array
-with `array_values`) or splits one type into two.
+The same loop deletes obsolete block types (collect indexes, remove, reindex the array with `array_values`) or splits one type into two.
 
 ## Nested blocks
 
-A block type can carry another block property; the stored JSON then nests the same
-structure one level deeper:
+A block type can carry another block property; the stored JSON then nests the same structure one level deeper:
 
 ```json
 {
@@ -129,10 +118,7 @@ structure one level deeper:
 }
 ```
 
-A flat `foreach` over `$data['blocks']` misses those inner entries. Transform
-recursively instead; when the template is known, recurse into the nested block
-properties by name, otherwise detect them generically (a list of arrays that carry a
-`type` key):
+A flat `foreach` over `$data['blocks']` misses those inner entries. Transform recursively instead; when the template is known, recurse into the nested block properties by name, otherwise detect them generically (a list of arrays that carry a `type` key):
 
 ```php
 /**
@@ -162,9 +148,7 @@ private function transformBlocks(array $blocks): array
 }
 ```
 
-Called as `$data['blocks'] = $this->transformBlocks($data['blocks'] ?? []);` compare
-against the original array (`$data !== $original`) to decide whether the row needs an
-update.
+Called as `$data['blocks'] = $this->transformBlocks($data['blocks'] ?? []);` compare against the original array (`$data !== $original`) to decide whether the row needs an update.
 
 ## SQL-only variant for trivial renames
 
@@ -180,14 +164,11 @@ WHERE templateKey = 'event'
   AND JSON_CONTAINS_PATH(templateData, 'one', '$.teaser');
 ```
 
-Database-specific and hard to review for anything nested - prefer the PHP pattern as
-soon as blocks are involved.
+Database-specific and hard to review for anything nested - prefer the PHP pattern as soon as blocks are involved.
 
 ## SEO and excerpt data
 
-`seoData` and `excerptData` are their own JSON columns with fixed shapes (the
-SEO/excerpt tab fields). Moving a value between the content tab and one of these tabs is
-a move between columns:
+`seoData` and `excerptData` are their own JSON columns with fixed shapes (the SEO/excerpt tab fields). Moving a value between the content tab and one of these tabs is a move between columns:
 
 ```php
 $template = \json_decode($row['templateData'], true, 512, \JSON_THROW_ON_ERROR);
