@@ -23,7 +23,7 @@ plain DoctrineMigrationsBundle migration.
    none (render with `|default` in Twig). Renaming a property, renaming a block
    type, moving a property into or out of blocks, or changing a stored value
    format orphans data and needs one.
-2. **Generate an empty migration**: `bin/console doctrine:migrations:generate` -
+2. **Generate an empty migration**: `bin/console doctrine:migrations:generate`;
    `doctrine:migrations:diff` only detects schema changes, never data.
 3. **Transform the rows.** Select the affected rows scoped by `templateKey`,
    decode `templateData`, transform in PHP, write back. Copy the patterns from
