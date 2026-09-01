@@ -31,7 +31,7 @@ See [BRAINSTORM.md](BRAINSTORM.md) for the full idea list and rationale.
 | [sulu-extend-entity](skills/sulu-extend-entity/) | 📝 planned | Extend built-in entities (contact, category, user, excerpt) |
 | [sulu-content-type](skills/sulu-content-type/) | 📝 planned | Custom content types and admin field types |
 | [sulu-list](skills/sulu-list/) | 📝 planned | List transformers, toolbar/item actions, overlay adapters |
-| [sulu-admin-ui](skills/sulu-admin-ui/) | 📝 planned | Admin JS build: custom views, styling, CKEditor, icons |
+| [sulu-admin-ui](skills/sulu-admin-ui/) | ✅ draft | Admin JS build workflow, custom views, styling, CKEditor, icons, admin URL |
 | [sulu-website](skills/sulu-website/) | 📝 planned | Navigation, smart content, search, sitemap, robots.txt |
 | [sulu-webspace](skills/sulu-webspace/) | 📝 planned | Webspaces, localizations, portals, redirects |
 | [sulu-headless](skills/sulu-headless/) | 📝 planned | Headless delivery / APIs |

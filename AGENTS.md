@@ -10,6 +10,7 @@ only when the skill points you at it.
 | `sulu-discover` | about to rely on memory for a Sulu API, template, webspace, route or service | `skills/sulu-discover/SKILL.md` |
 | `sulu-template` | creating or changing a page/snippet/article template (XML + Twig) | `skills/sulu-template/SKILL.md` |
 | `sulu-custom-entity` | a project entity needs list/form/API in the Sulu admin | `skills/sulu-custom-entity/SKILL.md` |
+| `sulu-admin-ui` | customizing the admin UI: the assets/admin JS build, custom views, admin styling, CKEditor, icons, or changing the /admin URL | `skills/sulu-admin-ui/SKILL.md` |
 | `sulu-content-entity` | a project entity needs page-like content: templates, SEO, publish workflow, preview | `skills/sulu-content-entity/SKILL.md` |
 | `sulu-upgrade` | updating Sulu versions, migrating 2.6 content to 3.0, or fixing an upgrade gone wrong | `skills/sulu-upgrade/SKILL.md` |
 
