@@ -54,9 +54,9 @@ block-specific parts are described here.
   old `type` string; the resolver logs an error and falls back to
   `default-type` (in debug mode it throws). Renames need a content migration
   (see the [sulu-content-migration](../sulu-content-migration/SKILL.md) skill).
-- Keep global block keys and local type names unique across the project -
-  mixing is supported, but a local type shadowing a global key is confusing
-  (docs recommendation).
+- Keep global block keys and local type names unique across the
+  project - mixing is supported, but a local type shadowing a global key is
+  confusing (docs recommendation).
 - A block with `minOccurs="1"` and `maxOccurs="1"` resolves to a single block
   object instead of a list - a `{% for %}` over it breaks. Use distinct
   markup for that case.
