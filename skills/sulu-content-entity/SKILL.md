@@ -21,8 +21,8 @@ Articles in 3.0 are built exactly this way - `packages/article` in sulu/sulu and
 implementations this skill is derived from.
 
 Prerequisite: the plain-entity mechanics (Admin class, list XML, routes, resource
-registration) from the [sulu-custom-entity](../sulu-custom-entity/SKILL.md) skill -
-only the content-specific deltas are described here.
+registration) from the [sulu-custom-entity](../sulu-custom-entity/SKILL.md)
+skill - only the content-specific deltas are described here.
 
 ## Workflow
 
@@ -63,8 +63,8 @@ Use `Event`/`events`/template type `event` as placeholders.
 
 ## Pitfalls
 
-- **Don't hand-map trait fields** in the dimension content's Doctrine mapping -
-  the MetadataLoader does it; duplicating columns breaks the schema diff.
+- **Don't hand-map trait fields** in the dimension content's Doctrine
+  mapping - the MetadataLoader does it; duplicating columns breaks the schema diff.
 - The dimension content table gets **multiple rows per entity** (per locale,
   stage, version). Never query it directly for "the" content - always resolve
   through `ContentManager`/`ContentAggregator` with dimension attributes.

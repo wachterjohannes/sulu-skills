@@ -16,9 +16,10 @@ Full function/filter list: [Twig extensions reference](https://docs.sulu.io/3.x/
 
 ## How XML properties map to Twig variables
 
-Every `<property name="x">` in the template XML appears in Twig as `content.x` -
-the names must match exactly, which is why the XML and the Twig template have to
-stay in sync: renaming a property in one file silently yields `null` in the other.
+Every `<property name="x">` in the template XML appears in Twig as
+`content.x` - the names must match exactly, which is why the XML and the Twig
+template have to stay in sync: renaming a property in one file silently yields
+`null` in the other.
 
 The value is not the raw stored data. Before rendering, the content system runs
 each property through the resolver for its XML `type` (tagged

@@ -29,8 +29,8 @@ procedure and the traps, not a substitute for that file.
 The order matters - steps 1–4 happen **while still on 2.x**:
 
 1. **Latest 2.6 first.** Update sulu/sulu and every sulu bundle to their latest 2.6
-   releases. `sulu/sulu-rector` helps here (`SuluLevelSetList::UP_TO_SULU_26`) -
-   note it has **no 3.0 set**; the 3.0 renames are manual (see
+   releases. `sulu/sulu-rector` helps here (`SuluLevelSetList::UP_TO_SULU_26`),
+   but note it has **no 3.0 set**; the 3.0 renames are manual (see
    `references/2x-to-30.md`). Then run all pending PHPCR migrations:
    `bin/adminconsole phpcr:migrations:migrate`.
 2. **Validate keys.** Webspace, template and navigation-context keys must match
