@@ -1,7 +1,7 @@
 # Block reference (Sulu 3.0)
 
-Verified against sulu/sulu 3.0 (template XSD, content package resolvers, admin
-form metadata) and the 3.x docs
+Verified against sulu/sulu 3.0 (template XSD, content package resolvers, admin form
+metadata) and the 3.x docs
 ([block property type](https://docs.sulu.io/3.x/reference/property-types/block.html),
 [templates book page](https://docs.sulu.io/3.x/book/templates.html)).
 
@@ -40,14 +40,13 @@ form metadata) and the 3.x docs
 ```
 
 - Attributes (from `properties-1.0.xsd`): `name` (required), `default-type`,
-  `mandatory`, `multilingual`, `minOccurs`, `maxOccurs`, `colspan`,
-  `visibleCondition`, `disabledCondition`.
-- Params: `add_button_text`, `paste_button_text`, `collapsable` (default
-  true), `movable` (default true).
-- A `<type>` has either `name` (local) or `ref` (global block key), never
-  both; one of the two is required.
-- Nested blocks: a type's `<properties>` may contain another `<block>`, to
-  any depth.
+  `mandatory`, `multilingual`, `minOccurs`, `maxOccurs`, `colspan`, `visibleCondition`,
+  `disabledCondition`.
+- Params: `add_button_text`, `paste_button_text`, `collapsable` (default true),
+  `movable` (default true).
+- A `<type>` has either `name` (local) or `ref` (global block key), never both; one of
+  the two is required.
+- Nested blocks: a type's `<properties>` may contain another `<block>`, to any depth.
 
 ## Global blocks
 
@@ -83,9 +82,9 @@ pre-registered as template type `block`; filename = key):
 ```
 
 No `<view>`, `<controller>` or `url` property. A global block's properties may
-themselves contain a `<block>`, including further `<type ref="..."/>` entries.
-Usage in any template: `<type ref="text_block"/>`. Stored entries carry
-`"type": "text_block"`, so the Twig partial dispatch works unchanged.
+themselves contain a `<block>`, including further `<type ref="..."/>` entries. Usage in
+any template: `<type ref="text_block"/>`. Stored entries carry `"type": "text_block"`,
+so the Twig partial dispatch works unchanged.
 
 ## Stored JSON shape
 
@@ -125,28 +124,25 @@ One partial per type, e.g. `templates/includes/blocks/editor.html.twig`:
 ```
 
 A nested block renders by repeating the loop inside the partial over
-`content.<nested block name>`. Resolved settings that survive filtering are
-available as `block.settings`.
+`content.<nested block name>`. Resolved settings that survive filtering are available as
+`block.settings`.
 
 ## Block settings
 
-Every `block` field automatically receives
-`settings_form_key: content_block_settings`
+Every `block` field automatically receives `settings_form_key: content_block_settings`
 (`BlockSettingsFormMetadataVisitor` in the AdminBundle). The shipped form
 (`packages/content/config/forms/content_block_settings.xml`) contains:
 
 - `hidden` - hide the block,
-- `schedules` - show only in fixed date ranges or weekly time windows
-  (page package and audience targeting merge segment/target-group settings in
-  the same way).
+- `schedules` - show only in fixed date ranges or weekly time windows (page package and
+  audience targeting merge segment/target-group settings in the same way).
 
-On the website, `HiddenBlockVisitor` and `ScheduleBlockVisitor` (content
-package) drop matching blocks during property resolving; the admin and the
-draft preview still show them.
+On the website, `HiddenBlockVisitor` and `ScheduleBlockVisitor` (content package) drop
+matching blocks during property resolving; the admin and the draft preview still show
+them.
 
-**Add custom settings fields** by shipping a form with the same key in
-`config/forms/` - forms with an identical `<key>` are merged
-(`XmlFormMetadataLoader`):
+**Add custom settings fields** by shipping a form with the same key in `config/forms/`
+- forms with an identical `<key>` are merged (`XmlFormMetadataLoader`):
 
 ```xml
 <?xml version="1.0" ?>
@@ -173,13 +169,12 @@ draft preview still show them.
 </form>
 ```
 
-The `sulu.block_setting_icon` tag shows an icon on the collapsed block when
-the setting is active. A single block can use a completely separate form via
+The `sulu.block_setting_icon` tag shows an icon on the collapsed block when the setting
+is active. A single block can use a completely separate form via
 `<param name="settings_form_key" value="my_block_settings"/>`.
 
-**React to settings on the website** either in the partial
-(`block.settings.full_width`) or, to filter blocks out entirely, with a
-visitor:
+**React to settings on the website** either in the partial (`block.settings.full_width`)
+or, to filter blocks out entirely, with a visitor:
 
 ```php
 use Sulu\Content\Application\PropertyResolver\BlockVisitor\BlockVisitorInterface;
