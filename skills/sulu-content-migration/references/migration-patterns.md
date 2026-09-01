@@ -82,8 +82,8 @@ loop (`WHERE templateKey = ? AND id > ? ORDER BY id LIMIT 500`).
 ## Block restructuring
 
 Blocks are stored under their property name as an array of objects; each entry
-carries its `type` plus that type's properties (nested blocks repeat the same
-structure). Renaming a block type and moving a field:
+carries its `type` plus that type's properties (for nested blocks see the next
+section). Renaming a block type and moving a field:
 
 ```php
 $data = \json_decode($row['templateData'], true, 512, \JSON_THROW_ON_ERROR);
@@ -109,6 +109,62 @@ if ($changed) {
 
 The same loop deletes obsolete block types (collect indexes, remove, reindex the
 array with `array_values`) or splits one type into two.
+
+## Nested blocks
+
+A block type can carry another block property; the stored JSON then nests the
+same structure one level deeper:
+
+```json
+{
+    "blocks": [
+        {
+            "type": "columns",
+            "columnBlocks": [
+                {"type": "text", "text": "..."},
+                {"type": "image", "image": {"id": 5}}
+            ]
+        }
+    ]
+}
+```
+
+A flat `foreach` over `$data['blocks']` misses those inner entries. Transform
+recursively instead; when the template is known, recurse into the nested block
+properties by name, otherwise detect them generically (a list of arrays that
+carry a `type` key):
+
+```php
+/**
+ * @param array<int, array<string, mixed>> $blocks
+ *
+ * @return array<int, array<string, mixed>>
+ */
+private function transformBlocks(array $blocks): array
+{
+    foreach ($blocks as $i => $block) {
+        if ('text' === ($block['type'] ?? null)) {
+            $block['type'] = 'editor';
+            $block['article'] = $block['text'] ?? null;
+            unset($block['text']);
+        }
+
+        foreach ($block as $key => $value) {
+            if (\is_array($value) && \array_is_list($value) && isset($value[0]['type'])) {
+                $block[$key] = $this->transformBlocks($value);
+            }
+        }
+
+        $blocks[$i] = $block;
+    }
+
+    return $blocks;
+}
+```
+
+Called as `$data['blocks'] = $this->transformBlocks($data['blocks'] ?? []);`
+compare against the original array (`$data !== $original`) to decide whether the
+row needs an update.
 
 ## SQL-only variant for trivial renames
 
