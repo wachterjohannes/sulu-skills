@@ -73,6 +73,7 @@ Verified against the [sulu/skeleton `3.0` branch](https://github.com/sulu/skelet
 
 ## Common property types
 
+Full list with parameters: [property types reference](https://docs.sulu.io/3.x/reference/property-types/index.html).
 Always check availability in the concrete project (bundles can add types):
 
 | Type | Purpose |
@@ -90,12 +91,15 @@ Always check availability in the concrete project (bundles can add types):
 
 ## Blocks
 
+Blocks use a dedicated `<block>` element (not `<property type="block">`), with the
+default type as attribute — this is the syntax the skeleton's `default.xml` uses:
+
 ```xml
-<property name="blocks" type="block" minOccurs="0">
+<block name="blocks" default-type="text" minOccurs="0">
     <meta>
         <title lang="en">Content</title>
     </meta>
-    <types default-type="text">
+    <types>
         <type name="text">
             <meta>
                 <title lang="en">Text</title>
@@ -124,7 +128,7 @@ Always check availability in the concrete project (bundles can add types):
             </properties>
         </type>
     </types>
-</property>
+</block>
 ```
 
 Twig side: iterate `content.blocks`, dispatch on `block.type`, typically by including

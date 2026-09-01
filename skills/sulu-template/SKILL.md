@@ -35,11 +35,15 @@ A template consists of two files that must stay in sync:
    - Every property carries `<meta><title lang="en">…</title></meta>`; add all
      locales the project's webspaces define.
    - See `references/template-xml.md` for the full annotated structure, common
-     property types and block syntax.
-3. **Write the Twig template.** Extend the project's `base.html.twig`; property
-   values are available as `content.<name>`, SEO/excerpt data as `extension.seo` /
-   `extension.excerpt`. See `references/twig.md` for the 3.0 variables and functions
-   (several were renamed from 2.x).
+     property types and block syntax; the complete type list is in the
+     [property types reference](https://docs.sulu.io/3.x/reference/property-types/index.html).
+3. **Write the Twig template.** Extend the project's `base.html.twig`. Every
+   `<property name="x">` from the XML surfaces in Twig as `content.x` — same name,
+   resolved value — with render metadata in `view.x`; SEO/excerpt data lives in
+   `extension.seo` / `extension.excerpt`. See `references/twig.md` for how that
+   mapping works and the 3.0 variables/functions, and the
+   [Twig extensions reference](https://docs.sulu.io/3.x/reference/twig-extensions/index.html)
+   for the full function/filter list.
 4. **Register where needed.** Templates in `config/templates/pages/` are picked up
    automatically and appear in the admin's template dropdown. Touch
    `config/webspaces/*.xml` only when the template should become a
@@ -57,9 +61,11 @@ A template consists of two files that must stay in sync:
 
 ## Pitfalls
 
-- **2.x knowledge does not transfer blindly.** In 3.0 the website controller FQCN,
-  the `url` property type (`route` instead of `resource_locator`) and several Twig
-  function names changed. When in doubt, trust the project's existing files and
+- **2.x knowledge does not transfer blindly.** 3.0 changed the class name of the
+  default website controller (`Sulu\Content\UserInterface\Controller\Website\ContentController`
+  replaces 2.x's `Sulu\Bundle\WebsiteBundle\Controller\DefaultController`), the
+  `url` property type (`route` instead of `resource_locator`) and several Twig
+  function names. When in doubt, trust the project's existing files and
   `references/`, not memory of Sulu 2.x.
 - Changing a property **name** in a template that already has content orphans the
   stored values — that is a content migration (see the `sulu-content-migration`
