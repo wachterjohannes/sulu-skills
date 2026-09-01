@@ -68,13 +68,11 @@ Verified against the [sulu/skeleton `3.0` branch](https://github.com/sulu/skelet
 ## Article template differences
 
 - Same head as pages (`view`, `controller`, `cacheLifetime`).
-- `url` property uses `type="page_tree_route"` (article URLs hang below a page),
-  without the `sulu.rlp` tag.
+- `url` property uses `type="page_tree_route"` (article URLs hang below a page), without the `sulu.rlp` tag.
 
 ## Common property types
 
-Full list with parameters: [property types reference](https://docs.sulu.io/3.x/reference/property-types/index.html).
-Always check availability in the concrete project (bundles can add types):
+Full list with parameters: [property types reference](https://docs.sulu.io/3.x/reference/property-types/index.html). Always check availability in the concrete project (bundles can add types):
 
 | Type | Purpose |
 | --- | --- |
@@ -91,8 +89,7 @@ Always check availability in the concrete project (bundles can add types):
 
 ## Blocks
 
-Blocks use a dedicated `<block>` element (not `<property type="block">`), with the
-default type as attribute - this is the syntax the skeleton's `default.xml` uses:
+Blocks use a dedicated `<block>` element (not `<property type="block">`), with the default type as attribute - this is the syntax the skeleton's `default.xml` uses:
 
 ```xml
 <block name="blocks" default-type="text" minOccurs="0">
@@ -131,13 +128,11 @@ default type as attribute - this is the syntax the skeleton's `default.xml` uses
 </block>
 ```
 
-Twig side: iterate `content.blocks`, dispatch on `block.type`, typically by including
-one partial per block type.
+Twig side: iterate `content.blocks`, dispatch on `block.type`, typically by including one partial per block type.
 
 ## Registration
 
-- Dropping the XML into `config/templates/pages/` is enough; no explicit
-  registration needed in the skeleton setup.
+- Dropping the XML into `config/templates/pages/` is enough; no explicit registration needed in the skeleton setup.
 - Webspace (`config/webspaces/*.xml`) controls defaults and exclusions:
 
 ```xml

@@ -1,8 +1,6 @@
 # Admin class reference (Sulu 3.0)
 
-Pattern verified against `TagAdmin` in sulu/sulu 3.0. App-level Admin classes in
-`src/Admin/` are picked up automatically: the AdminBundle autoconfigures every
-`Admin` subclass with the `sulu.admin` tag, and the skeleton autowires constructors.
+Pattern verified against `TagAdmin` in sulu/sulu 3.0. App-level Admin classes in `src/Admin/` are picked up automatically: the AdminBundle autoconfigures every `Admin` subclass with the `sulu.admin` tag, and the skeleton autowires constructors.
 
 ```php
 <?php
@@ -128,10 +126,6 @@ class EventAdmin extends Admin
 
 Notes:
 
-- For a **localized** entity, add `->addLocales($locales)` /
-  `->setDefaultLocale($locales[0])` to the list and tab view builders and use
-  `/events/:locale` style paths (get locales from
-  `Sulu\Component\Localization\Manager\LocalizationManagerInterface`).
+- For a **localized** entity, add `->addLocales($locales)` / `->setDefaultLocale($locales[0])` to the list and tab view builders and use `/events/:locale` style paths (get locales from `Sulu\Component\Localization\Manager\LocalizationManagerInterface`).
 - Translation keys (`app.events`) go into `translations/admin.en.json`.
-- The security context group label (`'App'` above) is the section heading shown in
-  the permission matrix of user roles.
+- The security context group label (`'App'` above) is the section heading shown in the permission matrix of user roles.

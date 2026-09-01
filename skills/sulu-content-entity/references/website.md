@@ -1,16 +1,10 @@
 # Website, preview & optional integrations (Sulu 3.0)
 
-Derived from `ExampleTestBundle/Resources/config/services.yaml` in sulu/sulu
-(`packages/content/tests/Application/`). Each integration is one service with one
-tag; the skeleton autowires/autoconfigures `App\` classes, but the tags with their
-alias/key attributes must be declared explicitly in `config/services.yaml`.
+Derived from `ExampleTestBundle/Resources/config/services.yaml` in sulu/sulu (`packages/content/tests/Application/`). Each integration is one service with one tag; the skeleton autowires/autoconfigures `App\` classes, but the tags with their alias/key attributes must be declared explicitly in `config/services.yaml`.
 
 ## Website rendering (entity has own URLs)
 
-Requires `RoutableTrait` on the dimension content and a `route`-type `url` property
-in the entity's templates. A **RouteDefaultsProvider** tells the router how to
-render a matched route - use the generic content one as pattern
-(`ExampleTestBundle/Route/ExampleRouteDefaultsProvider.php`) and tag it:
+Requires `RoutableTrait` on the dimension content and a `route`-type `url` property in the entity's templates. A **RouteDefaultsProvider** tells the router how to render a matched route - use the generic content one as pattern (`ExampleTestBundle/Route/ExampleRouteDefaultsProvider.php`) and tag it:
 
 ```yaml
 App\Sulu\EventRouteDefaultsProvider:
@@ -18,9 +12,7 @@ App\Sulu\EventRouteDefaultsProvider:
         - { name: sulu_route.route_defaults_provider, resource_key: events }
 ```
 
-It resolves the entity via repository + `sulu_content.content_aggregator` (stage
-`live`) and returns the template's `<view>`/`<controller>` as route defaults - the
-same `ContentController` flow pages use.
+It resolves the entity via repository + `sulu_content.content_aggregator` (stage `live`) and returns the template's `<view>`/`<controller>` as route defaults - the same `ContentController` flow pages use.
 
 ## Admin preview
 
@@ -55,6 +47,4 @@ Add them only when asked for - none are required for the admin/CRUD/publish flow
 
 ## Twig side
 
-Website templates for the entity live wherever the template XML's `<view>` points
-(e.g. `templates/events/default.html.twig`) and work exactly like page templates:
-`content.*`, `extension.seo`, `extension.excerpt` (see the sulu-template skill).
+Website templates for the entity live wherever the template XML's `<view>` points (e.g. `templates/events/default.html.twig`) and work exactly like page templates: `content.*`, `extension.seo`, `extension.excerpt` (see the sulu-template skill).

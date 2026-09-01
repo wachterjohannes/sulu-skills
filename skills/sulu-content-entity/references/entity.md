@@ -1,7 +1,6 @@
 # Entity reference - content-rich entity (Sulu 3.0)
 
-Derived from `ExampleTestBundle` in `sulu/sulu` `packages/content/tests/Application/`
-and the article package (`packages/article/src/Domain/Model/`).
+Derived from `ExampleTestBundle` in `sulu/sulu` `packages/content/tests/Application/` and the article package (`packages/article/src/Domain/Model/`).
 
 ## Main entity
 
@@ -39,13 +38,11 @@ class Event implements ContentRichEntityInterface
 }
 ```
 
-(Articles use a UUID instead of an auto-increment id - `Uuid::v7()->toRfc4122()` in
-the constructor; either works.)
+(Articles use a UUID instead of an auto-increment id - `Uuid::v7()->toRfc4122()` in the constructor; either works.)
 
 ## Dimension content entity
 
-Compose from the trait/interface pairs the entity actually needs. Full stack (what
-articles use):
+Compose from the trait/interface pairs the entity actually needs. Full stack (what articles use):
 
 ```php
 <?php
@@ -150,22 +147,13 @@ class EventDimensionContent implements
 }
 ```
 
-Trim the stack for simpler entities: minimum is `DimensionContentTrait` +
-`TemplateTrait`; drop `RoutableTrait` if the entity has no own URLs, `ShadowTrait`
-if no shadow locales, etc. Interfaces and traits come in pairs - implement the
-interface for every trait used (the content system feature-detects via
-`instanceof`).
+Trim the stack for simpler entities: minimum is `DimensionContentTrait` + `TemplateTrait`; drop `RoutableTrait` if the entity has no own URLs, `ShadowTrait` if no shadow locales, etc. Interfaces and traits come in pairs - implement the interface for every trait used (the content system feature-detects via `instanceof`).
 
 ## Doctrine mapping
 
-**Map only your own fields** - id, the relation between the two entities, and
-denormalized fields like `title`. Everything the traits add (locale, stage,
-version, templateKey, templateData, seo, excerpt, workflowPlace, …) is mapped
-automatically by `Sulu\Content\Infrastructure\Doctrine\MetadataLoader` via the
-`loadClassMetadata` event.
+**Map only your own fields** - id, the relation between the two entities, and denormalized fields like `title`. Everything the traits add (locale, stage, version, templateKey, templateData, seo, excerpt, workflowPlace, …) is mapped automatically by `Sulu\Content\Infrastructure\Doctrine\MetadataLoader` via the `loadClassMetadata` event.
 
-With attribute mapping in an app (the core packages map via XML, which doesn't
-have this constraint):
+With attribute mapping in an app (the core packages map via XML, which doesn't have this constraint):
 
 ```php
 // Event
@@ -189,13 +177,8 @@ protected Event $event;
 protected ?string $title = null;
 ```
 
-The `dimensionContents` ↔ entity relation must cascade persist and delete via the
-database (`onDelete: CASCADE`), matching the ExampleTestBundle's XML mapping.
+The `dimensionContents` ↔ entity relation must cascade persist and delete via the database (`onDelete: CASCADE`), matching the ExampleTestBundle's XML mapping.
 
 ## Repository
 
-Content-aware queries go through
-`sulu_content.dimension_content_query_enhancer` - build a repository like
-`ExampleTestBundle/Repository/ExampleRepository.php` (selector constants decide
-whether/which dimension contents get joined) or start from the article package's
-`ArticleRepository` for the full-featured version.
+Content-aware queries go through `sulu_content.dimension_content_query_enhancer` - build a repository like `ExampleTestBundle/Repository/ExampleRepository.php` (selector constants decide whether/which dimension contents get joined) or start from the article package's `ArticleRepository` for the full-featured version.

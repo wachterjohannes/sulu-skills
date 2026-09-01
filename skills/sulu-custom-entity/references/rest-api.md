@@ -1,8 +1,6 @@
 # REST API reference (Sulu 3.0)
 
-Pattern verified against `TagController` in sulu/sulu 3.0. The admin's list view
-talks a specific protocol: `GET …?flat=true` with pagination/sorting/filter query
-parameters, answered by a `PaginatedRepresentation` built from the list metadata.
+Pattern verified against `TagController` in sulu/sulu 3.0. The admin's list view talks a specific protocol: `GET …?flat=true` with pagination/sorting/filter query parameters, answered by a `PaginatedRepresentation` built from the list metadata.
 
 ## Controller
 
@@ -118,16 +116,9 @@ class EventController extends AbstractRestController implements SecuredControlle
 }
 ```
 
-The response of `getAction` must serialize to the property names the form XML uses
-(JMS serializer is installed; plain getters matching the form property names work).
+The response of `getAction` must serialize to the property names the form XML uses (JMS serializer is installed; plain getters matching the form property names work).
 
-Wiring: the skeleton autowires and autoconfigures `App\` services. The needed
-autowiring aliases exist in Sulu core (`FieldDescriptorFactoryInterface`,
-`DoctrineListBuilderFactoryInterface`, `RestHelperInterface`); FOSRestBundle
-provides `ViewHandlerInterface`. If autowiring fails for one of them, wire the
-service ids explicitly: `sulu_core.list_builder.field_descriptor_factory`,
-`sulu_core.doctrine_list_builder_factory`, `sulu_core.doctrine_rest_helper`,
-`fos_rest.view_handler`.
+Wiring: the skeleton autowires and autoconfigures `App\` services. The needed autowiring aliases exist in Sulu core (`FieldDescriptorFactoryInterface`, `DoctrineListBuilderFactoryInterface`, `RestHelperInterface`); FOSRestBundle provides `ViewHandlerInterface`. If autowiring fails for one of them, wire the service ids explicitly: `sulu_core.list_builder.field_descriptor_factory`, `sulu_core.doctrine_list_builder_factory`, `sulu_core.doctrine_rest_helper`, `fos_rest.view_handler`.
 
 ## Routes
 
@@ -184,5 +175,4 @@ sulu_admin:
                 detail: app.get_event
 ```
 
-The admin frontend derives every API call for the resource key from these two
-route names - `detail` doubles for POST/PUT/DELETE.
+The admin frontend derives every API call for the resource key from these two route names - `detail` doubles for POST/PUT/DELETE.
