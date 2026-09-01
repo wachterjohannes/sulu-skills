@@ -164,15 +164,18 @@ version, templateKey, templateData, seo, excerpt, workflowPlace, …) is mapped
 automatically by `Sulu\Content\Infrastructure\Doctrine\MetadataLoader` via the
 `loadClassMetadata` event.
 
-With attribute mapping in an app:
+With attribute mapping in an app (the core packages map via XML, which doesn't
+have this constraint):
 
 ```php
 // Event
 #[ORM\Entity]
 #[ORM\Table(name: 'events')]
 // ...
+// Redeclared from ContentRichEntityTrait to attach the attribute. MUST stay
+// untyped — the trait declares it untyped, and PHP fatals on a typed redeclare.
 #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventDimensionContent::class, cascade: ['persist'], fetch: 'EXTRA_LAZY')]
-protected Collection $dimensionContents;   // property name fixed by ContentRichEntityTrait
+protected $dimensionContents;
 
 // EventDimensionContent
 #[ORM\Entity]

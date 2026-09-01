@@ -21,8 +21,8 @@ Articles in 3.0 are built exactly this way — `packages/article` in sulu/sulu a
 implementations this skill is derived from.
 
 Prerequisite: the plain-entity mechanics (Admin class, list XML, routes, resource
-registration) from the **sulu-custom-entity** skill — only the content-specific
-deltas are described here.
+registration) from the [sulu-custom-entity](../sulu-custom-entity/SKILL.md) skill —
+only the content-specific deltas are described here.
 
 ## Workflow
 
@@ -30,6 +30,7 @@ Use `Event`/`events`/template type `event` as placeholders.
 
 1. **Entities** — `Event` (uses `ContentRichEntityTrait`, implements
    `createDimensionContent()`) and `EventDimensionContent` (the trait stack).
+   Start from `templates/Event.php` and `templates/EventDimensionContent.php`.
    Only id/relation/denormalized fields need Doctrine mapping — the content
    package's `MetadataLoader` maps all trait fields automatically. See
    `references/entity.md`.
