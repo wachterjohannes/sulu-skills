@@ -124,8 +124,8 @@ Same schema and property types as page templates (`form-1.0.xsd` instead of
 </form>
 ```
 
-- `<title>` here takes a translation key directly (no `lang` attribute needed -
-  admin translations resolve it).
+- `<title>` here takes a translation key directly (no `lang` attribute
+  needed - admin translations resolve it).
 - Property names must match what the REST API serializes/accepts.
 - All template property types work (`media_selection`, `single_select`, blocks,
   …) - see the sulu-template skill's reference for the type list.
