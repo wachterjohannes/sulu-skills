@@ -56,8 +56,24 @@ mkdir -p .claude/skills
 cp -R /path/to/sulu-skills/skills/* .claude/skills/
 ```
 
-(or `~/.claude/skills/` for every project). Other agents: point them at `AGENTS.md`,
-which indexes every skill with its trigger.
+(or `~/.claude/skills/` for every project).
+
+**Codex**, per project:
+
+```bash
+mkdir -p .agents/skills
+cp -R /path/to/sulu-skills/skills/* .agents/skills/
+```
+
+(or `~/.agents/skills/` for every project).
+
+**opencode** picks up the Claude Code and Codex locations (`.claude/skills/`,
+`.agents/skills/` and their global counterparts) as-is; its native locations are
+`.opencode/skills/` per project and `~/.config/opencode/skills/` globally.
+
+Other agents: point them at `AGENTS.md`, which indexes every skill with its trigger —
+[docs/other-agents.md](docs/other-agents.md) shows an example table to paste into the
+project's instructions file.
 
 ## Conventions
 
