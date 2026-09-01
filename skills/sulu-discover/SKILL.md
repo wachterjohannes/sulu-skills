@@ -1,6 +1,6 @@
 ---
 name: sulu-discover
-description: Use before relying on memory for a Sulu API, template structure, webspace, route, service or admin view — look it up in the project instead. Sulu 3.0 renamed controllers, property types and Twig functions; recalled 2.x knowledge is the main source of wrong code.
+description: Use before relying on memory for a Sulu API, template structure, webspace, route, service or admin view — look it up in the project instead. The project's files, consoles and installed source are authoritative; recalled knowledge may not match the installed Sulu version.
 version: 1.0.0
 updated: 2026-08-31
 sulu-versions: ">=3.0"
@@ -8,9 +8,9 @@ sulu-versions: ">=3.0"
 
 # Discover, don't guess
 
-Sulu 3.0 moved content off PHPCR, split bundles into packages (`Sulu\Content\…`,
-`Sulu\Page\…`, `Sulu\Article\…`) and renamed things 2.x code relied on. Training data is
-mostly 2.x. The project itself is authoritative; ask it.
+The project itself is authoritative — its config files, consoles and installed source
+answer most questions faster and more reliably than memory, which may lag behind the
+installed Sulu version. Ask the project.
 
 ## What is installed
 
@@ -55,12 +55,15 @@ Integration points are tagged services — `debug:container --tag=<tag>` for
 
 ## After changing things
 
+In the dev environment most edits are picked up automatically — Symfony rebuilds the
+affected caches on the next request, so a cache clear is not required after every
+change. But template XML, webspace XML, lists and forms are all cached, and when an
+edit seems to do nothing, clearing is always the safe fallback before hunting for
+another cause:
+
 ```bash
 bin/adminconsole cache:clear && bin/websiteconsole cache:clear
 ```
-
-Template XML, webspace XML, lists and forms are all cached — an edit that "does
-nothing" almost always means a missing cache clear, not a wrong file.
 
 ## When the console cannot answer
 
