@@ -27,7 +27,7 @@ class Event implements ContentRichEntityInterface
     protected ?int $id = null;
 
     /**
-     * Redeclared from ContentRichEntityTrait to attach the mapping attribute —
+     * Redeclared from ContentRichEntityTrait to attach the mapping attribute -
      * MUST stay untyped, a typed redeclaration conflicts with the trait.
      *
      * @var Collection<int, EventDimensionContent>&iterable<int, EventDimensionContent>

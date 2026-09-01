@@ -1,11 +1,11 @@
 # Using the skills with other agents
 
 For agents without a native skill system: copy the `skills/` folders into the
-project — preferably to the standard `.agents/skills/` location, so agents with
-native support (Codex, opencode) pick the same copy up automatically — and add an
+project - preferably to the standard `.agents/skills/` location, so agents with
+native support (Codex, opencode) pick the same copy up automatically - and add an
 index table to the instructions file the agent reads every session (`AGENTS.md`,
 `GEMINI.md`, `.cursorrules`, …). The table tells the agent when to open which
-skill — without it, the copied folders are never read.
+skill - without it, the copied folders are never read.
 
 Example, with the skills copied to `.agents/skills/`:
 
@@ -26,5 +26,5 @@ folder only when the skill points you at it.
 ```
 
 This repo's own [AGENTS.md](../AGENTS.md) is the same table with repo-relative
-paths — copying it over and adjusting the `File` column works too. Keep the table
+paths - copying it over and adjusting the `File` column works too. Keep the table
 in sync when adding or removing skills.

@@ -26,10 +26,10 @@ use Sulu\Content\Domain\Model\WorkflowInterface;
 use Sulu\Content\Domain\Model\WorkflowTrait;
 
 /**
- * Full trait stack (what articles use) — trim what the entity doesn't need:
+ * Full trait stack (what articles use) - trim what the entity doesn't need:
  * minimum is DimensionContentTrait + TemplateTrait; drop RoutableTrait without
  * own URLs, ShadowTrait without shadow locales, etc. Keep interface and trait
- * in pairs — the content system feature-detects via instanceof.
+ * in pairs - the content system feature-detects via instanceof.
  *
  * @implements DimensionContentInterface<Event>
  */

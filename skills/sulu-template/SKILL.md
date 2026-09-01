@@ -1,6 +1,6 @@
 ---
 name: sulu-template
-description: Create or modify page, snippet or article templates in a Sulu 3.0 project — the XML structure definition, the matching Twig template, registration in the webspace and cache handling. Use whenever a task involves adding a new page type, changing template properties, or wiring a template into a webspace.
+description: Create or modify page, snippet or article templates in a Sulu 3.0 project - the XML structure definition, the matching Twig template, registration in the webspace and cache handling. Use whenever a task involves adding a new page type, changing template properties, or wiring a template into a webspace.
 version: 1.0.0
 updated: 2026-08-31
 sulu-versions: ">=3.0"
@@ -10,12 +10,12 @@ sulu-versions: ">=3.0"
 
 A template consists of two files that must stay in sync:
 
-1. **XML structure definition** — `config/templates/<type>/<key>.xml`
+1. **XML structure definition** - `config/templates/<type>/<key>.xml`
    with `<type>` one of `pages`, `snippets`, `articles`. The file name (without
    `.xml`) MUST equal the `<key>` element inside the file.
-2. **Twig template** — `templates/<view>.html.twig`, where `<view>` is the `<view>`
+2. **Twig template** - `templates/<view>.html.twig`, where `<view>` is the `<view>`
    value from the XML (e.g. `<view>pages/event</view>` → `templates/pages/event.html.twig`).
-   Snippets have no view/controller — they render inside the page that references them.
+   Snippets have no view/controller - they render inside the page that references them.
 
 ## Workflow
 
@@ -38,8 +38,8 @@ A template consists of two files that must stay in sync:
      property types and block syntax; the complete type list is in the
      [property types reference](https://docs.sulu.io/3.x/reference/property-types/index.html).
 3. **Write the Twig template.** Extend the project's `base.html.twig`. Every
-   `<property name="x">` from the XML surfaces in Twig as `content.x` — same name,
-   resolved value — with render metadata in `view.x`; SEO/excerpt data lives in
+   `<property name="x">` from the XML surfaces in Twig as `content.x` - same name,
+   resolved value - with render metadata in `view.x`; SEO/excerpt data lives in
    `extension.seo` / `extension.excerpt`. See `references/twig.md` for how that
    mapping works and the 3.0 variables/functions, and the
    [Twig extensions reference](https://docs.sulu.io/3.x/reference/twig-extensions/index.html)
@@ -56,7 +56,7 @@ A template consists of two files that must stay in sync:
    ```
    Verify by listing the admin's known templates or loading a page with the new
    template. If the template does not appear in the admin dropdown, the key/filename
-   mismatch or a schema violation in the XML is the most likely cause — validate
+   mismatch or a schema violation in the XML is the most likely cause - validate
    against the XSD referenced in the file header.
 
 ## Pitfalls
@@ -68,7 +68,7 @@ A template consists of two files that must stay in sync:
   function names. When in doubt, trust the project's existing files and
   `references/`, not memory of Sulu 2.x.
 - Changing a property **name** in a template that already has content orphans the
-  stored values — that is a content migration (see the `sulu-content-migration`
+  stored values - that is a content migration (see the `sulu-content-migration`
   skill), not a template edit.
 - The `homepage` template type is separate: it is assigned via the webspace's
   `<default-template type="home">`, not selectable per page.

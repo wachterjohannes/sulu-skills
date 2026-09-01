@@ -3,7 +3,7 @@
 Verified against TagBundle in sulu/sulu 3.0. Both directories are pre-registered in
 the skeleton (`config/packages/sulu_admin.yaml`).
 
-## List XML — `config/lists/events.xml`
+## List XML - `config/lists/events.xml`
 
 ```xml
 <?xml version="1.0" ?>
@@ -45,7 +45,7 @@ the skeleton (`config/packages/sulu_admin.yaml`).
 Simple filters take no params: `text`, `number`, `date`, `datetime`, `boolean`.
 Two take configuration (both verified against MediaBundle's `media.xml`):
 
-`select` — fixed option list; param name = stored value, param value =
+`select` - fixed option list; param name = stored value, param value =
 translation key:
 
 ```xml
@@ -64,7 +64,7 @@ translation key:
 </property>
 ```
 
-`selection` — filter by related Sulu resources via a selection overlay; needs a
+`selection` - filter by related Sulu resources via a selection overlay; needs a
 join to the related entity:
 
 ```xml
@@ -88,11 +88,11 @@ join to the related entity:
 </property>
 ```
 
-Filter-only relation properties get `visibility="never"` — as a column they would
+Filter-only relation properties get `visibility="never"` - as a column they would
 duplicate rows for entities with multiple relations (see the comment in core's
 `media.xml`).
 
-## Form XML — `config/forms/event_details.xml`
+## Form XML - `config/forms/event_details.xml`
 
 Same schema and property types as page templates (`form-1.0.xsd` instead of
 `template-1.0.xsd`, no view/controller/cacheLifetime):
@@ -124,8 +124,8 @@ Same schema and property types as page templates (`form-1.0.xsd` instead of
 </form>
 ```
 
-- `<title>` here takes a translation key directly (no `lang` attribute needed —
+- `<title>` here takes a translation key directly (no `lang` attribute needed -
   admin translations resolve it).
 - Property names must match what the REST API serializes/accepts.
 - All template property types work (`media_selection`, `single_select`, blocks,
-  …) — see the sulu-template skill's reference for the type list.
+  …) - see the sulu-template skill's reference for the type list.

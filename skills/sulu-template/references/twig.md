@@ -16,14 +16,14 @@ Full function/filter list: [Twig extensions reference](https://docs.sulu.io/3.x/
 
 ## How XML properties map to Twig variables
 
-Every `<property name="x">` in the template XML appears in Twig as `content.x` —
+Every `<property name="x">` in the template XML appears in Twig as `content.x` -
 the names must match exactly, which is why the XML and the Twig template have to
 stay in sync: renaming a property in one file silently yields `null` in the other.
 
 The value is not the raw stored data. Before rendering, the content system runs
 each property through the resolver for its XML `type` (tagged
 `sulu_content.property_resolver`), which turns stored references into usable
-values — a `media_selection` stores ids but arrives in Twig as media objects, a
+values - a `media_selection` stores ids but arrives in Twig as media objects, a
 `single_page_selection` as the resolved page, `text_line` simply as its string.
 That is also why the property **type** matters beyond admin UI: it decides what
 `content.x` contains. The resolver additionally fills `view.x` with render
@@ -42,7 +42,7 @@ metadata (ids, params) for the same property name.
 {% endblock %}
 ```
 
-## Navigation and paths — 3.0 names
+## Navigation and paths - 3.0 names
 
 Several functions were renamed from 2.x; the page-tree navigation functions now carry
 a `sulu_page_` prefix:

@@ -13,5 +13,5 @@ only when the skill points you at it.
 | `sulu-content-entity` | a project entity needs page-like content: templates, SEO, publish workflow, preview | `skills/sulu-content-entity/SKILL.md` |
 | `sulu-upgrade` | updating Sulu versions, migrating 2.6 content to 3.0, or fixing an upgrade gone wrong | `skills/sulu-upgrade/SKILL.md` |
 
-Folders under `skills/` that carry only a `README.md` are planned skills — the README
+Folders under `skills/` that carry only a `README.md` are planned skills - the README
 states the intended scope, but there is no guidance to follow yet.

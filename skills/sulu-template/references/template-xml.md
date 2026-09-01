@@ -2,7 +2,7 @@
 
 Verified against the [sulu/skeleton `3.0` branch](https://github.com/sulu/skeleton/tree/3.0).
 
-## Page template — annotated
+## Page template - annotated
 
 ```xml
 <?xml version="1.0" ?>
@@ -16,7 +16,7 @@ Verified against the [sulu/skeleton `3.0` branch](https://github.com/sulu/skelet
     <!-- templates/pages/event.html.twig -->
     <view>pages/event</view>
 
-    <!-- 3.0 namespace — NOT the 2.x Sulu\Bundle\WebsiteBundle controller -->
+    <!-- 3.0 namespace - NOT the 2.x Sulu\Bundle\WebsiteBundle controller -->
     <controller>Sulu\Content\UserInterface\Controller\Website\ContentController::indexAction</controller>
 
     <!-- http cache lifetime in seconds -->
@@ -92,7 +92,7 @@ Always check availability in the concrete project (bundles can add types):
 ## Blocks
 
 Blocks use a dedicated `<block>` element (not `<property type="block">`), with the
-default type as attribute — this is the syntax the skeleton's `default.xml` uses:
+default type as attribute - this is the syntax the skeleton's `default.xml` uses:
 
 ```xml
 <block name="blocks" default-type="text" minOccurs="0">

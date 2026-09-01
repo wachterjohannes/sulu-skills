@@ -185,4 +185,4 @@ sulu_admin:
 ```
 
 The admin frontend derives every API call for the resource key from these two
-route names — `detail` doubles for POST/PUT/DELETE.
+route names - `detail` doubles for POST/PUT/DELETE.

@@ -1,11 +1,11 @@
-# Sulu Skills — Brainstorm
+# Sulu Skills - Brainstorm
 
 Claude (Agent) Skills for **Sulu 3.0** project development. Sources: the `[Example]` PRs
 in [sulu/sulu-demo](https://github.com/sulu/sulu-demo/pulls) (each demonstrates one
 common customization), the Sulu bundle ecosystem, and the Sulu docs.
 
 **Scope decision:** The skills target Sulu 3.0. The demo example PRs were written
-against Sulu 2.x, so they serve as the *catalog of tasks worth covering* — the concrete
+against Sulu 2.x, so they serve as the *catalog of tasks worth covering* - the concrete
 guidance in each skill must be written and verified against 3.0 (new content
 architecture via SuluContentBundle, changed template/config conventions). Where a 2.x
 pattern no longer applies in 3.0, the skill documents the 3.0 way, not the PR's diff.
@@ -30,7 +30,7 @@ via XInclude, matching Twig partials.
 
 ### sulu-custom-entity
 Integrate a custom Doctrine entity into the admin: entity + repository, Admin class,
-list XML, form XML, routes, controller/REST API, permissions — in 3.0 ideally
+list XML, form XML, routes, controller/REST API, permissions - in 3.0 ideally
 content-aware via SuluContentBundle where versioned/localized content is needed
 (tasks from [#73](https://github.com/sulu/sulu-demo/pull/73),
 [#88 global settings entity](https://github.com/sulu/sulu-demo/pull/88),
@@ -72,7 +72,7 @@ Admin customizations that require the admin JS build: custom views
 ([#77](https://github.com/sulu/sulu-demo/pull/77)), custom icon fonts
 ([#111](https://github.com/sulu/sulu-demo/pull/111)), changing the admin URL
 ([#60](https://github.com/sulu/sulu-demo/pull/60)). The skill should encode the
-`assets/admin` build workflow for 3.0 — the part people struggle with most.
+`assets/admin` build workflow for 3.0 - the part people struggle with most.
 
 ### sulu-website
 Website-side features: navigation contexts, smart content data providers, search,
@@ -110,11 +110,11 @@ Project setup and runtime: 3.0 skeleton bootstrap, Docker/FrankenPHP setups
 Upgrade a project to Sulu 3.0 (and between 3.x versions): run sulu-rector, apply
 UPGRADE.md entries, migrate template XML changes, migrate content off PHPCR onto the
 3.0 content architecture, verify the admin build. Encodes the known pitfalls of the
-2.x → 3.0 jump — highest-pain task in the ecosystem right now.
+2.x → 3.0 jump - highest-pain task in the ecosystem right now.
 
 ### sulu-content-migration
 Write content migrations for structural changes: template property renames, block
-restructuring, bulk content changes — the 3.0 equivalent of what
+restructuring, bulk content changes - the 3.0 equivalent of what
 SuluPHPCRMigrationBundle covered in 2.x.
 
 ### sulu-doctor
@@ -131,7 +131,7 @@ Repo layout follows
 `AGENTS.md` trigger index for agents without a native skill system, per-agent install
 docs as plain "copy the folders". Each skill keeps `references/` (distilled, 3.0-verified
 guidance; the demo PRs serve as the task catalog, not as copy sources) and `templates/`
-(file skeletons) — a deliberate divergence from symfony-skills' 40-line-single-file
+(file skeletons) - a deliberate divergence from symfony-skills' 40-line-single-file
 style, justified by Sulu's irreducible XML/PHP structure. No Claude Code plugin packaging
 for now; distribution later possibly as a Symfony AI Mate extension (like
 sulu-mate-extension), so a Sulu project pulls the skills in via Composer and
@@ -145,11 +145,11 @@ NOT part of this repo.
 
 Suggested order by value ÷ effort:
 
-1. **sulu-template** — most frequent task, pure convention.
-2. **sulu-custom-entity** — most steps, biggest payoff.
-3. **sulu-upgrade** — 2.x → 3.0 is the acute pain point; also drives 3.0 adoption.
-4. **sulu-admin-ui** — hardest to get right without guidance (JS build).
-5. **sulu-block / sulu-list / sulu-extend-entity** — round out the everyday tasks.
+1. **sulu-template** - most frequent task, pure convention.
+2. **sulu-custom-entity** - most steps, biggest payoff.
+3. **sulu-upgrade** - 2.x → 3.0 is the acute pain point; also drives 3.0 adoption.
+4. **sulu-admin-ui** - hardest to get right without guidance (JS build).
+5. **sulu-block / sulu-list / sulu-extend-entity** - round out the everyday tasks.
 
 Open questions:
 
@@ -162,18 +162,18 @@ Open questions:
 
 ## Backlog: content-ops skill ideas (MCP-based, not part of the core)
 
-Kept as ideas — these target editors/marketers in Cowork via the Sulu MCP tools
+Kept as ideas - these target editors/marketers in Cowork via the Sulu MCP tools
 (SuluMcpBundle / sulu-mate-extension) rather than developers:
 
-- **sulu-content-audit** — crawl the page tree and report missing SEO
+- **sulu-content-audit** - crawl the page tree and report missing SEO
   titles/descriptions, empty excerpts, missing alt texts, broken internal links,
   unpublished drafts, untranslated pages per locale.
-- **sulu-landing-page** — build a landing page from a brief with existing blocks,
+- **sulu-landing-page** - build a landing page from a brief with existing blocks,
   fill excerpt/SEO, generate a preview link.
-- **sulu-translate** — localize a page/article tree into another locale as drafts.
-- **sulu-content-import** — migrate content from external sources (CMS export, CSV,
+- **sulu-translate** - localize a page/article tree into another locale as drafts.
+- **sulu-content-import** - migrate content from external sources (CMS export, CSV,
   Markdown, URLs) into pages/articles.
-- **sulu-media-librarian** — media library housekeeping: alt texts, naming,
+- **sulu-media-librarian** - media library housekeeping: alt texts, naming,
   categories, unused media.
-- **sulu-editorial-calendar** — article drafting in house style, scheduling via
+- **sulu-editorial-calendar** - article drafting in house style, scheduling via
   SuluAutomationBundle, taxonomy consistency.

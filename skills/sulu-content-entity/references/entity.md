@@ -1,4 +1,4 @@
-# Entity reference — content-rich entity (Sulu 3.0)
+# Entity reference - content-rich entity (Sulu 3.0)
 
 Derived from `ExampleTestBundle` in `sulu/sulu` `packages/content/tests/Application/`
 and the article package (`packages/article/src/Domain/Model/`).
@@ -39,7 +39,7 @@ class Event implements ContentRichEntityInterface
 }
 ```
 
-(Articles use a UUID instead of an auto-increment id — `Uuid::v7()->toRfc4122()` in
+(Articles use a UUID instead of an auto-increment id - `Uuid::v7()->toRfc4122()` in
 the constructor; either works.)
 
 ## Dimension content entity
@@ -152,13 +152,13 @@ class EventDimensionContent implements
 
 Trim the stack for simpler entities: minimum is `DimensionContentTrait` +
 `TemplateTrait`; drop `RoutableTrait` if the entity has no own URLs, `ShadowTrait`
-if no shadow locales, etc. Interfaces and traits come in pairs — implement the
+if no shadow locales, etc. Interfaces and traits come in pairs - implement the
 interface for every trait used (the content system feature-detects via
 `instanceof`).
 
 ## Doctrine mapping
 
-**Map only your own fields** — id, the relation between the two entities, and
+**Map only your own fields** - id, the relation between the two entities, and
 denormalized fields like `title`. Everything the traits add (locale, stage,
 version, templateKey, templateData, seo, excerpt, workflowPlace, …) is mapped
 automatically by `Sulu\Content\Infrastructure\Doctrine\MetadataLoader` via the
@@ -173,7 +173,7 @@ have this constraint):
 #[ORM\Table(name: 'events')]
 // ...
 // Redeclared from ContentRichEntityTrait to attach the attribute. MUST stay
-// untyped — the trait declares it untyped, and PHP fatals on a typed redeclare.
+// untyped - the trait declares it untyped, and PHP fatals on a typed redeclare.
 #[ORM\OneToMany(mappedBy: 'event', targetEntity: EventDimensionContent::class, cascade: ['persist'], fetch: 'EXTRA_LAZY')]
 protected $dimensionContents;
 
@@ -195,7 +195,7 @@ database (`onDelete: CASCADE`), matching the ExampleTestBundle's XML mapping.
 ## Repository
 
 Content-aware queries go through
-`sulu_content.dimension_content_query_enhancer` — build a repository like
+`sulu_content.dimension_content_query_enhancer` - build a repository like
 `ExampleTestBundle/Repository/ExampleRepository.php` (selector constants decide
 whether/which dimension contents get joined) or start from the article package's
 `ArticleRepository` for the full-featured version.

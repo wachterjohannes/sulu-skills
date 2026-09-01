@@ -9,7 +9,7 @@ alias/key attributes must be declared explicitly in `config/services.yaml`.
 
 Requires `RoutableTrait` on the dimension content and a `route`-type `url` property
 in the entity's templates. A **RouteDefaultsProvider** tells the router how to
-render a matched route — use the generic content one as pattern
+render a matched route - use the generic content one as pattern
 (`ExampleTestBundle/Route/ExampleRouteDefaultsProvider.php`) and tag it:
 
 ```yaml
@@ -19,12 +19,12 @@ App\Sulu\EventRouteDefaultsProvider:
 ```
 
 It resolves the entity via repository + `sulu_content.content_aggregator` (stage
-`live`) and returns the template's `<view>`/`<controller>` as route defaults — the
+`live`) and returns the template's `<view>`/`<controller>` as route defaults - the
 same `ContentController` flow pages use.
 
 ## Admin preview
 
-No own class needed — register the generic provider with the entity class:
+No own class needed - register the generic provider with the entity class:
 
 ```yaml
 app.event_preview_object_provider:
@@ -51,7 +51,7 @@ app.event_preview_object_provider:
 | Resource loading for resolvers | `sulu_content.resource_loader, alias: event` | `ExampleTestBundle/ResourceLoader/ExampleResourceLoader.php` |
 | Reference tracking (media usage etc.) | `sulu_reference.refresher` | `ExampleTestBundle/Reference/ExampleReferenceRefresher.php` |
 
-Add them only when asked for — none are required for the admin/CRUD/publish flow.
+Add them only when asked for - none are required for the admin/CRUD/publish flow.
 
 ## Twig side
 

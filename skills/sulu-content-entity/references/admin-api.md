@@ -1,10 +1,10 @@
-# Admin & API reference — content-rich entity (Sulu 3.0)
+# Admin & API reference - content-rich entity (Sulu 3.0)
 
 Derived from `ExampleTestBundle` (`packages/content/tests/Application/` in sulu/sulu).
 
 ## Configuration
 
-`config/packages/sulu_admin.yaml` — resource routes, plus a **template type**
+`config/packages/sulu_admin.yaml` - resource routes, plus a **template type**
 registration that gives the entity its own template directory:
 
 ```yaml
@@ -91,11 +91,11 @@ operations the admin UI sends: `copy_locale` and `restore` via
 `$contentManager->copy(...)` between dimension attribute sets, `unpublish` and
 `remove_draft` via `applyTransition`. **For publish/unpublish/copy_locale/
 restore/remove_draft, load the entity with ALL dimension contents**, not just the
-current dimension — copy the branching from the ExampleController verbatim.
+current dimension - copy the branching from the ExampleController verbatim.
 
 `cgetAction` is a normal DoctrineListBuilder listing over the **main entity
 class**, plus `$listBuilder->setParameter('locale', $request->query->get('locale'))`
-and select fields for `locale`/`ghostLocale` — the list XML joins the dimension
+and select fields for `locale`/`ghostLocale` - the list XML joins the dimension
 content for title/workflow columns (copy
 `ExampleTestBundle/Resources/config/lists/examples.xml` as starting point).
 
