@@ -39,7 +39,7 @@ See [BRAINSTORM.md](BRAINSTORM.md) for the full idea list and rationale.
 | [sulu-testing](skills/sulu-testing/) | 📝 planned | Functional, Pest, E2E and API tests |
 | [sulu-devops](skills/sulu-devops/) | 📝 planned | Setup, Docker/FrankenPHP, deployment |
 | [sulu-upgrade](skills/sulu-upgrade/) | ✅ draft | 2.6 → 3.0 migration and 3.x updates |
-| [sulu-content-migration](skills/sulu-content-migration/) | 📝 planned | Content migrations for structural changes |
+| [sulu-content-migration](skills/sulu-content-migration/) | ✅ draft | Content migrations for structural changes (property renames, blocks, bulk edits) |
 | [sulu-doctor](skills/sulu-doctor/) | 📝 planned | Diagnose common misconfigurations |
 
 Planned skills carry a `README.md` describing their intended scope; a skill is real once

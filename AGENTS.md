@@ -12,6 +12,7 @@ only when the skill points you at it.
 | `sulu-custom-entity` | a project entity needs list/form/API in the Sulu admin | `skills/sulu-custom-entity/SKILL.md` |
 | `sulu-content-entity` | a project entity needs page-like content: templates, SEO, publish workflow, preview | `skills/sulu-content-entity/SKILL.md` |
 | `sulu-upgrade` | updating Sulu versions, migrating 2.6 content to 3.0, or fixing an upgrade gone wrong | `skills/sulu-upgrade/SKILL.md` |
+| `sulu-content-migration` | a template change orphans stored content: property renames, block restructuring, bulk content edits | `skills/sulu-content-migration/SKILL.md` |
 
 Folders under `skills/` that carry only a `README.md` are planned skills - the README
 states the intended scope, but there is no guidance to follow yet.
