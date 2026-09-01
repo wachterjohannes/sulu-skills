@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<list xmlns="http://schemas.sulu.io/list-builder/list">
+    <key>events</key>
+
+    <properties>
+        <property name="id" visibility="no" translation="sulu_admin.id">
+            <field-name>id</field-name>
+            <entity-name>App\Entity\Event</entity-name>
+        </property>
+
+        <property name="name" visibility="always" searchability="yes" translation="app.name">
+            <field-name>name</field-name>
+            <entity-name>App\Entity\Event</entity-name>
+            <filter type="text"/>
+        </property>
+
+        <property name="startDate" visibility="yes" translation="app.start_date">
+            <field-name>startDate</field-name>
+            <entity-name>App\Entity\Event</entity-name>
+            <transformer type="datetime"/>
+            <filter type="datetime"/>
+        </property>
+    </properties>
+</list>

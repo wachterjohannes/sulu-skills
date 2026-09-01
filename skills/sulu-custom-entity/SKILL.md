@@ -22,10 +22,12 @@ Use `Event`/`events` below as placeholder for the actual entity.
    public const RESOURCE_KEY = 'events';
    ```
 2. **List XML** — `config/lists/events.xml` (this directory is pre-registered in
-   `config/packages/sulu_admin.yaml`). `<key>` = resource key. See
+   `config/packages/sulu_admin.yaml`). `<key>` = resource key. Start from
+   `templates/list.xml` in this skill; details and filter types in
    `references/list-form-xml.md`.
 3. **Form XML** — `config/forms/event_details.xml` (also pre-registered). Uses the
-   same schema and property types as page templates. See `references/list-form-xml.md`.
+   same schema and property types as page templates. Start from
+   `templates/form.xml`; see `references/list-form-xml.md`.
 4. **REST controller + routes** — controller in `src/Controller/Admin/` providing
    `cgetAction`/`getAction`/`postAction`/`putAction`/`deleteAction`, plus route
    definitions under `/admin/api/events`. The list action MUST support the

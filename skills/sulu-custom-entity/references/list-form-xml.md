@@ -40,6 +40,58 @@ the skeleton (`config/packages/sulu_admin.yaml`).
 - Joins to related entities use named `<joins>` blocks referenced from fields
   (see TagBundle's `tags.xml` creator/changer joins for the pattern).
 
+### Filter types
+
+Simple filters take no params: `text`, `number`, `date`, `datetime`, `boolean`.
+Two take configuration (both verified against MediaBundle's `media.xml`):
+
+`select` — fixed option list; param name = stored value, param value =
+translation key:
+
+```xml
+<property name="type" visibility="yes" translation="app.type">
+    <field-name>type</field-name>
+    <entity-name>App\Entity\Event</entity-name>
+
+    <filter type="select">
+        <params>
+            <param name="options" type="collection">
+                <param name="concert" value="app.type_concert"/>
+                <param name="workshop" value="app.type_workshop"/>
+            </param>
+        </params>
+    </filter>
+</property>
+```
+
+`selection` — filter by related Sulu resources via a selection overlay; needs a
+join to the related entity:
+
+```xml
+<property name="tagId" visibility="never" translation="sulu_tag.tags">
+    <field-name>id</field-name>
+    <entity-name>Sulu\Bundle\TagBundle\Entity\Tag</entity-name>
+
+    <joins>
+        <join>
+            <entity-name>Sulu\Bundle\TagBundle\Entity\Tag</entity-name>
+            <field-name>App\Entity\Event.tags</field-name>
+        </join>
+    </joins>
+
+    <filter type="selection">
+        <params>
+            <param name="displayProperty" value="name"/>
+            <param name="resourceKey" value="tags"/>
+        </params>
+    </filter>
+</property>
+```
+
+Filter-only relation properties get `visibility="never"` — as a column they would
+duplicate rows for entities with multiple relations (see the comment in core's
+`media.xml`).
+
 ## Form XML — `config/forms/event_details.xml`
 
 Same schema and property types as page templates (`form-1.0.xsd` instead of
