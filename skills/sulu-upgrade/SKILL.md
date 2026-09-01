@@ -9,7 +9,7 @@ sulu-versions: ">=2.6"
 # Upgrading Sulu
 
 The authoritative source is `vendor/sulu/sulu/UPGRADE-3.x.md` **after** updating (or the
-[3.0 branch copy](https://github.com/sulu/sulu/blob/3.0/UPGRADE-3.x.md) before). Read the
+[3.0 branch copy](https://raw.githubusercontent.com/sulu/sulu/refs/heads/3.0/UPGRADE-3.x.md) before). Read the
 sections between the project's current version and the target — this skill gives the
 procedure and the traps, not a substitute for that file.
 
@@ -40,7 +40,7 @@ The order matters — steps 1–4 happen **while still on 2.x**:
    to latest 2.6, ensure its `Version202407111600` PHPCR migration ran, then
    `composer remove sulu/article-bundle --no-scripts` (and `elasticsearch/elasticsearch`
    if unused). Flex may delete `config/templates/articles/` — restore it from git.
-4. **Cleanup the repository:** `bin/adminconsole sulu:document:phpcr-cleanup`.
+4. **Cleanup the content-repository:** `bin/adminconsole sulu:document:phpcr-cleanup`.
 5. **Switch the dependency:** `composer require sulu/sulu:"3.0.*" --no-scripts`.
    Re-register bundles in `config/bundles.php` (new FQCNs like
    `Sulu\Content\Infrastructure\Symfony\HttpKernel\SuluContentBundle`) and update
@@ -57,6 +57,8 @@ The order matters — steps 1–4 happen **while still on 2.x**:
    # (dbal://default?workspace=... or jackrabbit://...):
    bin/adminconsole sulu:phpcr-migration:migrate
    ```
+   Installation and configuration details:
+   [SuluPHPCRMigrationBundle README](https://github.com/sulu/SuluPHPCRMigrationBundle).
    The command is **re-runnable** — already migrated content is overwritten, not
    duplicated. Fix errors from customized code and run again.
 9. **Finish:** `bin/adminconsole sulu:admin:update-build`, clear both caches, log in,
