@@ -1,14 +1,10 @@
 # Extending core entities: classes, objects config, user events (Sulu 3.0)
 
-Verified against sulu/sulu 3.0 and the
-[extend-entities cookbook](https://docs.sulu.io/3.x/cookbook/extend-entities.html).
+Verified against sulu/sulu 3.0 and the [extend-entities cookbook](https://docs.sulu.io/3.x/cookbook/extend-entities.html).
 
 ## How it works
 
-Core entities (Contact, User, Category, ...) are mapped as Doctrine
-**mapped-superclasses**. Sulu's persistence `MetadataSubscriber` flips the configured
-`model` class to a concrete entity at runtime and attaches the configured repository.
-Swapping the model therefore requires no change to core mappings.
+Core entities (Contact, User, Category, ...) are mapped as Doctrine **mapped-superclasses**. Sulu's persistence `MetadataSubscriber` flips the configured `model` class to a concrete entity at runtime and attaches the configured repository. Swapping the model therefore requires no change to core mappings.
 
 ## Extending class
 
@@ -41,9 +37,7 @@ class Contact extends SuluContact
 
 ## Objects config keys
 
-Each bundle exposes `objects.<name>.model` (and `repository`); the repository service
-`sulu.repository.<name>` and the `%sulu.model.<name>.class%` parameter follow the
-override.
+Each bundle exposes `objects.<name>.model` (and `repository`); the repository service `sulu.repository.<name>` and the `%sulu.model.<name>.class%` parameter follow the override.
 
 | Config root | Objects |
 | --- | --- |
@@ -62,16 +56,11 @@ sulu_contact:
             # repository: App\Repository\ContactRepository   # optional
 ```
 
-After the config change: `doctrine:migrations:diff`, `migrate`, clear both caches.
-Type-hints against the Sulu class keep working (subclass); code that needs the new
-getters casts or type-hints the app class.
+After the config change: `doctrine:migrations:diff`, `migrate`, clear both caches. Type-hints against the Sulu class keep working (subclass); code that needs the new getters casts or type-hints the app class.
 
 ## User lifecycle events
 
-`UserManager` collects domain events which the ActivityBundle dispatches through the
-standard `event_dispatcher`: `UserCreatedEvent`, `UserModifiedEvent`,
-`UserRemovedEvent`, `UserEnabledEvent`, `UserLockedEvent`, `UserPasswordResettedEvent`
-(plus Role events), all in `Sulu\Bundle\SecurityBundle\Domain\Event`.
+`UserManager` collects domain events which the ActivityBundle dispatches through the standard `event_dispatcher`: `UserCreatedEvent`, `UserModifiedEvent`, `UserRemovedEvent`, `UserEnabledEvent`, `UserLockedEvent`, `UserPasswordResettedEvent` (plus Role events), all in `Sulu\Bundle\SecurityBundle\Domain\Event`.
 
 ```php
 <?php
@@ -92,6 +81,4 @@ class UserCreatedListener
 }
 ```
 
-These events fire on actions going through Sulu's managers/controllers. For guarantees
-on every persistence path (fixtures, custom commands) use a plain Doctrine entity
-listener on the extended entity instead.
+These events fire on actions going through Sulu's managers/controllers. For guarantees on every persistence path (fixtures, custom commands) use a plain Doctrine entity listener on the extended entity instead.
